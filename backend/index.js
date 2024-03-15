@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 // console.log('hello')
 import volunteerRoutes from './routes/volunteer.js'
+import organizationRoutes from './routes/organization.js'
 dotenv.config()
 const app = express()
 const PORT = 5000
@@ -16,7 +17,11 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
 //routes
+// 1. volunteer registration and signin
 app.use('/volunteers',volunteerRoutes)
+
+//2. organization registration and signin
+app.use('/organization', organizationRoutes)
 
 const MONGO_URL = process.env.MONGO_URL
 mongoose.connect(
