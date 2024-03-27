@@ -6,6 +6,7 @@ import cors from 'cors';
 // console.log('hello')
 import volunteerRoutes from './routes/volunteer.js'
 import organizationRoutes from './routes/organization.js'
+import postRoutes from './routes/posts.js'
 dotenv.config()
 const app = express()
 const PORT = 5000
@@ -22,6 +23,9 @@ app.use('/volunteers',volunteerRoutes)
 
 //2. organization registration and signin
 app.use('/organization', organizationRoutes)
+
+//. post handling
+app.use('/posts', postRoutes)
 
 const MONGO_URL = process.env.MONGO_URL
 mongoose.connect(
