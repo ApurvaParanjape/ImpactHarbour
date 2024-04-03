@@ -2,6 +2,11 @@ import dotenv from 'dotenv'
 dotenv.config()
 import Post from '../models/Post.js' 
 import Organization from '../models/Organization.js'
+import Volunteer from '../models/Volunteer.js'
+
+export const print = async()=>{
+    console.log("hello");
+}
 
 export const getPosts = async(req,res)=>{
     try{
@@ -73,4 +78,32 @@ export const deletePost = async(req, res) =>{
     } catch (error) {
         return res.status(500).json({msg: "something wrong in controller/posts.js",error})
     }
+}
+
+export const applyToPost = async(req, res)=> {
+
+    try {
+        const {postId, volunteerId} = req.params;
+        console.log(postId, volunteerId)
+        const existingPost = await Post.findOne({_id: postId});
+        console.log(existingPost)
+        if(!existingPost) return res.status(403).json({message: "No post found"})
+        console.log("hii");
+        
+        const existingVolunteer = await Volunteer.findOne({_id: volunteerId})
+        console.log(existingVolunteer)
+        if(!existingVolunteer) return res.status(403).json({message: "No volunteer found"})
+        console.log("hii");
+
+        console.log(existingPost.applicants)
+        await existingPost.applicants.push(volunteerId)
+        const updatedPost = await Post.findByIdAndUpdate(postId, existingPost, { new: true});
+        console.log(updatedPost);
+
+        return res.status(200).json({msg: "Applied successfully", updatedPost})
+    } catch (error) {
+        return res.status(500).json({msg: "something wrong in controller/posts.js",error})
+    }
+    
+
 }
