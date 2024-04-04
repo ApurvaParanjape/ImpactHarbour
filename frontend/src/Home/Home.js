@@ -18,7 +18,11 @@ const Home = () => {
           <h3>Let's get Started</h3>
           <br></br>
           <div id='Join'>
-            <button style={{fontSize:'24px'}}><p>Join us</p></button>
+           
+            <button style={{fontSize:'24px'}}><p>Volunteer</p></button>
+            
+            <button style={{fontSize:'24px'}}><p>NGO Sign in</p></button>
+           
           </div>
        </div>
           <div>
@@ -30,6 +34,20 @@ const Home = () => {
             <img src={downimg}></img>
         </div>
       </section>
+      
+      <section id = "About" className="container">
+
+        <div id="row"  data-aos="fade-right">
+            <h2>What is Impact Harbor?</h2>
+            <br/>
+            <p>kajdd csakknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn</p>
+        </div>
+
+        <div id ="aboutimg" data-aos="fade-left">
+      <img src={Logo}></img>
+        </div>
+
+   </section>
     </div>
   )
 }
