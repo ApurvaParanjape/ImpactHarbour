@@ -1,13 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { useEffect } from 'react';
-import Home from './Home/Home';
+import Home from './Components/Home/Home';
+import OrganizationSignin from './Components/Org-Sign/OrganizationSignIn';
+import OrganizationSignup from './Components/Org-Sign/OrganizationSignup';
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-     <Home/>
-     </header>
+      
+      <Router>
+          
+   
+        <Routes>
+          <Route path='/' element={<Home></Home>}></Route>
+          <Route path="/organization/signup" element={<OrganizationSignup />} />
+          <Route path="/organization/signin" element={<OrganizationSignin />} />
+        </Routes>
+      </Router>
+      
     </div>
   );
 }
