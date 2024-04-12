@@ -20,10 +20,10 @@ const VolunteerSignup = () => {
     try {
       const response = await axios.post('http://localhost:5000/signup', formData);
       console.log(response.data);
-      // Handle successful sign up, like redirecting to another page
+      
     } catch (error) {
       console.error(error);
-      // Handle sign up error, show error message
+      
     }
   };
 
