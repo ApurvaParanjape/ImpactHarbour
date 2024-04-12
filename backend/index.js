@@ -29,11 +29,7 @@ app.use('/posts', postRoutes)
 
 const MONGO_URL = process.env.MONGO_URL
 mongoose.connect(
-    MONGO_URL, 
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }
+    MONGO_URL
 ).then(()=>{
     app.listen(PORT, ()=> console.log(`Server running at port ${PORT}`))
 })

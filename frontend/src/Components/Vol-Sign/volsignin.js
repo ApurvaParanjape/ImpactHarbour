@@ -1,10 +1,8 @@
-
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import './signin-styles.css'; 
 
-const OrganizationSignin = () => {
+const VolunteerSignin = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -15,9 +13,10 @@ const OrganizationSignin = () => {
     try {
       const response = await axios.post('http://localhost:5000/signin', formData);
       console.log(response.data);
-       
+      // Handle successful sign in, like redirecting to another page
     } catch (error) {
       console.error(error);
+      // Handle sign in error, show error message
     }
   };
 
@@ -27,7 +26,7 @@ const OrganizationSignin = () => {
 
   return (
     <div className="signin-container">
-      <h2>Organization Signin</h2>
+      <h2>Volunteer Signin</h2>
       <form className="signin-form" onSubmit={handleSubmit}>
         <div>
           <label>Email:</label>
@@ -57,4 +56,4 @@ const OrganizationSignin = () => {
   );
 };
 
-export default OrganizationSignin;
+export default VolunteerSignin;
