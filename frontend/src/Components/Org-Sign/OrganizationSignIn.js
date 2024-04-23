@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import './signin-styles.css'; 
@@ -13,7 +11,7 @@ const OrganizationSignin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/signin', formData);
+      const response = await axios.post('http://localhost:5000/organization/signin', formData);
       console.log(response.data);
        
     } catch (error) {

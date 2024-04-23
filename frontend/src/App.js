@@ -15,10 +15,10 @@ function App() {
    
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
-          <Route path="/organization/signup" element={<OrganizationSignup />} />
-          <Route path="/organization/signin" element={<OrganizationSignin />} />
-          <Route path="/signup" element = {<VolunteerSignup/>} />
-          <Route path="/signin" element = {<VolunteerSignin/>} />
+          <Route path="/signup" element={<OrganizationSignup />} />
+          <Route path="/signin" element={<OrganizationSignin />} />
+          <Route path="/vol/signup" element = {<VolunteerSignup/>} />
+          <Route path="/vol/signin" element = {<VolunteerSignin/>} />
         </Routes>
       </Router>
       

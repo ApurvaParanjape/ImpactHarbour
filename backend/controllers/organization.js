@@ -4,28 +4,31 @@ import dotenv from 'dotenv'
 dotenv.config()
 import Organization from '../models/Organization.js'
 
-export const signUp = async(req,res)=> {
-    const {name, email, password, confirmPassword, address, city, description} = req.body;
+export const signUp = async (req, res) => {
+    const { name, email, password, confirmPassword, address, city, description } = req.body;
 
     try {
-        const existingOrg = await Organization.findOne({email})
+        const existingOrg = await Organization.findOne({ email });
 
-        if(existingOrg) return res.status(403).json({message: "Aldready exists", existingOrg})
+        if (existingOrg) {
+            console.log("this is the error for existing user");
+            return res.status(403).json({ message: "Already exists", existingOrg });
+        }
 
-        if(password !== confirmPassword) return res.status(400).json({message: "password does not match"})
+        if (password !== confirmPassword) {
+            return res.status(400).json({ message: "Passwords do not match" });
+        }
 
         const passwordHash = await bcrypt.hash(password, 12);
+        const result = await Organization.create({ name, email, password: passwordHash, address, city, currentPosts: 0, description });
+        const token = jwt.sign({ email: result.email, id: result._id }, process.env.JWT_SECRET, { expiresIn: "2h" });
 
-        const result = await Organization.create({ name, email, password: passwordHash,address, city,currentPosts: 0, description});
-
-        const token = jwt.sign({email: result.email, id: result._id},process.env.JWT_SECRET, {expiresIn: "2h"})
-        
-        res.status(200).json({message: "user created successfully", result, token})
-
+        res.status(200).json({ message: "User created successfully", result, token });
     } catch (error) {
-        res.status(500).json({message: 'error in backend/controllers/organization.js', error});
+        console.error("Error in signUp:", error);
+        res.status(500).json({ message: 'Error in signUp', error: error.message });
     }
-}
+};
 
 export const signIn = async(req,res) =>{
     const {name, email, password} = req.body

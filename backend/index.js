@@ -17,9 +17,22 @@ app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
+
+app.get('/', (req, res) => {
+    res.send('Welcome to the homepage!');
+  });
+
+
 //routes
 // 1. volunteer registration and signin
+// app.get('/organization', (req, res) => {
+//     res.send('Welcome to the Org Page!');
+//   });
+  
 app.use('/volunteers',volunteerRoutes)
+
+
+
 
 //2. organization registration and signin
 app.use('/organization', organizationRoutes)
