@@ -6,6 +6,7 @@ import OrganizationSignin from './Components/Org-Sign/OrganizationSignIn';
 import OrganizationSignup from './Components/Org-Sign/OrganizationSignup';
 import VolunteerSignin from './Components/Vol-Sign/volsignin';
 import VolunteerSignup from './Components/Vol-Sign/volsignup';
+import PostManagement from './Components/Posts/PostActivity';
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,7 @@ function App() {
           <Route path="/signin" element={<OrganizationSignin />} />
           <Route path="/vol/signup" element = {<VolunteerSignup/>} />
           <Route path="/vol/signin" element = {<VolunteerSignin/>} />
+          <Route path="/posts" element = {<PostManagement/>} />
         </Routes>
       </Router>
       
