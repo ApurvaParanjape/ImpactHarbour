@@ -18,7 +18,7 @@ const VolunteerSignup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/signup', formData);
+      const response = await axios.post('http://localhost:5000/volunteers/vol/signup', formData);
       console.log(response.data);
       
     } catch (error) {
