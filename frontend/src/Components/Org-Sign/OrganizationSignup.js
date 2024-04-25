@@ -9,17 +9,14 @@ const OrganizationSignup = () => {
     password: '',
     confirmPassword: '',
     address: '',
-    city: '',
-    description: ''
+    city: '', // Add city field
+    description: '' // Add description field
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      
       const response = await axios.post('http://localhost:5000/organization/signup', formData);
-
-
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -39,8 +36,8 @@ const OrganizationSignup = () => {
         <input type="password" name="password" placeholder="Password" onChange={handleChange} />
         <input type="password" name="confirmPassword" placeholder="Confirm Password" onChange={handleChange} />
         <input type="text" name="address" placeholder="Address" onChange={handleChange} />
-        <input type="text" name="city" placeholder="City" onChange={handleChange} />
-        <textarea name="description" placeholder="Description" onChange={handleChange}></textarea>
+        <input type="text" name="city" placeholder="City" onChange={handleChange} /> {/* Add city input field */}
+        <textarea name="description" placeholder="Description" onChange={handleChange}></textarea> {/* Add description textarea */}
         <button type="submit">Sign Up</button>
       </form>
     </div>
